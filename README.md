@@ -1,24 +1,16 @@
-# README
+# The Calculator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is a small web-service which offers the following functionality: for a given arithmetic expression (Integer Numbers and the operators **+-*/**), the service responds to the result of the expression.
 
-Things you may want to cover:
+The request is using GET, providing the parameter “expression”, e.g.
+* curl “http://calculator?expression=3*4”
 
-* Ruby version
+**Note**: to use '+' operation you have to encode it in the expression parameter, e.g.
+* curl “http://calculator?expression=3%2B4”
 
-* System dependencies
+The response format is JSON and including two keys:
 
-* Configuration
+* expression: [echo the computed expression]
+* result: [computed result of the expression]
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For security reasons, an existing access token must be specified in the request headers.
