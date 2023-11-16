@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Api::V1::Operations", type: :request do
+  before do
+    Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
+    Rails.cache.clear
+  end
+
   describe "GET /" do
     context "when auth token is not provided" do
       it "returns unauthorized" do
