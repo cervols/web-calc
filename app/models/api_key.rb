@@ -7,7 +7,7 @@ class ApiKey < ApplicationRecord
 
   private
 
-    def generate_access_token
-      self.access_token = Digest::MD5.hexdigest(SecureRandom.hex)
-    end
+  def generate_access_token
+    self.access_token = Digest::MD5.hexdigest(SecureRandom.hex)
+  end
 end

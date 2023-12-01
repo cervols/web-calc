@@ -1,5 +1,5 @@
 class Api::V1::OperationsController < ApplicationController
-  before_action :restrict_access
+  before_action :authenticate!
 
   EXPRESSION_REGEXP = /\d+([-+*\/]{1}\d+)+/
 
@@ -12,20 +12,13 @@ class Api::V1::OperationsController < ApplicationController
       expression: secure_expression_string,
       result: result
     }, status: :ok
-
   rescue ActionController::ParameterMissing => e
     render json: { error: e.message }, status: :bad_request
   end
 
   private
 
-    def restrict_access
-      authenticate_or_request_with_http_token do |token, options|
-        ApiKey.exists?(access_token: token)
-      end
-    end
-
-    def expression_params
-      params.require(:expression)
-    end
+  def expression_params
+    params.require(:expression)
+  end
 end

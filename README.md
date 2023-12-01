@@ -13,4 +13,8 @@ The response format is JSON and including two keys:
 * expression: [echo the computed expression]
 * result: [computed result of the expression]
 
-For security reasons, an existing access token must be specified in the request headers.
+For security reasons, an existing access token with its identifier must be specified in the request headers in the folowing format:
+
+```ruby
+[TOKEN_ID]:[TOKEN]
+```

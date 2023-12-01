@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'get response from unmatched route', :type => :request do
+RSpec.describe 'get response from unmatched route', type: :request do
   it 'responds with 404 status' do
     get '/not_found_route'
 

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include ActionController::RequestForgeryProtection
+  include Authentication
 
   protect_from_forgery with: :exception
 
